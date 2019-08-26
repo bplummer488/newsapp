@@ -1,0 +1,117 @@
+body{
+    background: lightgrey;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; 
+    user-select: none;
+    margin: 0;
+    padding: 0;
+}
+
+.headerA{
+    color: white;
+    text-decoration: none;
+}
+
+.headerA:hover{
+    color: black;
+}
+
+.container{
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-container{
+    margin: 8px 0 -12px;
+    padding: 0px 10px;
+    text-align: center;
+}
+
+input{
+    width: 60%;
+    padding: 6px;
+    background: white;
+    border-radius: 8px 0 0 4px;
+    border: none;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+input:focus{
+    outline: none;
+}
+
+button{
+    padding: 6px 16px;
+    background: grey;
+    border-radius: 0 4px 8px 0;
+    border: none;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.25);
+    color: white;
+}
+
+button:hover{
+    cursor: pointer;
+    background: black;
+}
+
+button:focus{
+    outline: none;
+}
+
+.cards{
+    background: white;
+    margin: 20px 10px;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 24px 8px;
+}
+
+.img-container{
+    width: 100%;
+    text-align: center;
+}
+
+.img-css{
+    width: 80%;
+    height: auto;
+    border-radius: 24px 8px;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+
+.cards-bottom{
+    max-width: 500px;
+    padding: 8px 16px 32px;
+    margin: 0 auto;
+}
+
+.title{
+    padding: 16px 32px;
+    background-color: grey;
+    text-transform: uppercase;
+    word-break: normal,break-all,keep-all,break-word,initial,inherit;
+    color: white;
+    border-radius: 24px 8px 0 0;
+}
+
+.author{
+    padding: 0 32px;
+}
+
+.date{
+    font-weight: bold;
+    padding: 0 32px;
+    margin: -16px 0 8px 0;
+}
+
+.content{
+    word-break: normal,break-all,keep-all,break-word,initial,inherit;
+}
+
+a{
+    color: black;
+}
+
+a:hover{
+    cursor: pointer;
+    color: grey;
+}
+
