@@ -8,11 +8,10 @@ class App extends Component {
       articles:[],
       date: '',
       subject: 'Marvel Comics',
-      key: ''
+      key: '',
+      language: 'n'
     };
   }
-
-  
 
   componentDidMount(){
 
@@ -24,7 +23,7 @@ class App extends Component {
       date: today 
     });
 
-    let url = 'https://newsapi.org/v2/everything?q='+this.state.subject+'&from='+this.state.date+'&sortBy=publishedAt&apiKey=6375d648dfa245cf86fc6795b17b6a25';
+    let url = 'https://newsapi.org/v2/everything?q='+this.state.subject+'&from='+this.state.date+'&language=e'+this.state.language+'&sortBy=publishedAt&apiKey=6375d648dfa245cf86fc6795b17b6a25';
 
     this.setState({
       key: url 
@@ -50,7 +49,37 @@ class App extends Component {
         [event.target.name]: event.target.value
       })
 
-      let url = 'https://newsapi.org/v2/everything?q='+this.state.subject+'&from='+this.state.date+'&sortBy=publishedAt&apiKey=6375d648dfa245cf86fc6795b17b6a25';
+      this.refetch();
+    }
+
+    handleInputChange = (event) => {
+      event.preventDefault();
+
+      //Check To Make Sure VALUE Is Not White Space
+      if(event.target.value.trim().length > 0){
+
+        //Sets Value And Removes White Space Infront Of Value
+        this.setState({
+          [event.target.name]: event.target.value.trim()
+        });
+      }
+    }
+
+    languageChange = () => {
+      this.setState({language: 's'}, this.refetch );
+
+      
+    }
+
+    languageChangeBack = () => {
+      this.setState({
+        language: 'n'}, this.refetch );
+
+
+    }
+
+    refetch = () =>{
+      let url = 'https://newsapi.org/v2/everything?q='+this.state.subject+'&from='+this.state.date+'&language=e'+this.state.language+'&sortBy=publishedAt&apiKey=6375d648dfa245cf86fc6795b17b6a25';
 
       this.setState({
         key: url 
@@ -67,19 +96,6 @@ class App extends Component {
         });
     }
 
-    handleInputChange = (event) => {
-      event.preventDefault();
-
-      //Check To Make Sure VALUE Is Not White Space
-      if(event.target.value.trim().length > 0){
-
-        //Sets Value And Removes White Space Infront Of Value
-        this.setState({
-          [event.target.name]: event.target.value.trim()
-        });
-      }
-    }
-
   render() {
     return (
       <div className="App">
@@ -90,25 +106,25 @@ class App extends Component {
                   <input type='text' placeholder='Search' name='subject' onChange={this.handleInputChange}/>
                   <button>></button>
               </form>
+              <br/>
+              <button className="langButton" onClick={this.languageChange}>Espanol</button>
+              <button className="langButton"  onClick={this.languageChangeBack}>English</button>
             </div>
             
             {this.state.articles.map((item) => {
               return(
                 <div key={Math.random()} className="cards">
-                  <div key={Math.random()}>
-                    <div key={Math.random()} className="cards-top">
-                      <h2 key={Math.random()} className="title">{item.title}</h2>
-                      <h4 key={Math.random()} className="author">Written by {item.author}</h4>
-                      <p key={Math.random()} className="date">{this.state.date}</p>
+                    <div className="cards-top">
+                      <h3 className="title">{item.title}</h3>
+                      <h4 className="author">Written by {item.author}</h4>
                     </div>
-                    <div key={Math.random()} className="img-container">
-                      <img key={Math.random()} className="img-css" src={item.urlToImage} alt=""/>
+                    <div className="img-container">
+                      <img className="img-css" src={item.urlToImage} alt=""/>
                     </div>
-                    <div key={Math.random()} className="cards-bottom">
-                      <p key={Math.random()}>{item.description}</p>
-                      <a key={Math.random()} href={item.url}>Read the full article here...</a>
+                    <div className="cards-bottom">
+                      <p>{item.description}</p>
+                      <a href={item.url}>Read the full article here...</a>
                     </div>
-                  </div>
                 </div>
               );
             })}
